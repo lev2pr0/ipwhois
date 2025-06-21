@@ -3,9 +3,8 @@
 """
 Filename: ipwhois.py
 Author: Levar Norwood
-Date: YYYY-MM-DD
+Date: 2025-06-21
 Version: 1.0
-Description: Briefly describe what your script does.
 README: https://github.com/lev2pr0/ipwhois
 """
 
@@ -22,18 +21,20 @@ def system_check():
     if sys.platform.startswith("win"):
         os.system("cls")
         print("Windows detected.")
-        print("Starting...")
-        print("")
+        print("Starting..\n")
     elif sys.platform.startswith("darwin"):
         os.system("clear")
         print("macOS detected.")
-        print("Starting...")
-        print("")
-    else:
+        print("Starting..\n")
+    elif sys.platform.startswith("linux"):
         os.system("clear")
-        print(f"Platform '{sys.platform}' detected.")
-        print("Starting...")
-        print("")
+        print("Linux detected.")
+        print("Starting..\n")
+    else:
+        print(f"'{sys.platform}' platform detected and not supported.\n")
+        print("Exiting.. Goodbye..")
+        exit(1)
+
 
 # Verify filepath exists
 def filepath_check(filepath):
@@ -43,15 +44,12 @@ def filepath_check(filepath):
 
     if os.path.isdir(target_file) == True:
         print(f"'{target_file}' is a Directory path.")
-        print("")
-        print("Please provide path to .TXT or .CSV file.")
-        print("")
+        print("Please provide path to .TXT or .CSV file.\n")
         print("Exiting.. Goodbye..")
         exit(1)
 
     if not os.path.exists(target_file):
-        print(f"File '{target_file}' does not exist.")
-        print("")
+        print(f"File '{target_file}' does not exist.\n")
         print("Exiting.. Goodbye..")
         exit(1)
 
@@ -59,7 +57,7 @@ def filepath_check(filepath):
 def check_file_type(filepath):
     filename, file_extension = os.path.splitext(filepath)
     file_extension = file_extension.lower()
-
+    provided_file = filename + file_extension
     if file_extension == '.txt':
         report = ".txt"
         return report
@@ -68,15 +66,15 @@ def check_file_type(filepath):
         report = ".csv"
         return report
 
+    print(f"Provided File: {provided_file}")
     return file_extension
 
 # Scan file for IPv4 and export to a list
 def scan_export(file_type, filepath, ip_column_name):
     target_file = os.path.abspath(filepath)
     ipv4_pattern = re.compile(r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$')
-
+    iplist = []
     if file_type == '.csv':
-        iplist = []
         try:
             with open(target_file, mode='r', newline='') as csvfile:
                 reader = csv.DictReader(csvfile)
@@ -91,10 +89,7 @@ def scan_export(file_type, filepath, ip_column_name):
         except Exception as e:
             print(f"An error occurred: {e}")
             exit(1)
-        return iplist
-
-    if file_type == '.txt':
-        iplist = []
+    else:
         try:
             with open(target_file, mode='r') as txtfile:
                 for line in txtfile:
@@ -105,12 +100,36 @@ def scan_export(file_type, filepath, ip_column_name):
         except Exception as e:
             print(f"An error occurred: {e}")
             exit(1)
-        return iplist
+
+    if len(iplist) == 0:
+        print("No valid IPv4 addresses found.\n")
+        print("Exiting.. Goodbye..")
+        exit(1)
+
+    return iplist
+
+# Verbose function to provide CSV output of IP count
+def ip_counter(iplist):
+    ip_count = {}
+    for ip in iplist:
+        ip_count[ip] = ip_count.get(ip, 0) + 1
+
+    output_filename_csv = "ipcount_verbose.csv"
+    with open(output_filename_csv, 'w', newline='', encoding='utf-8') as csvfile:
+        csv_writer = csv.writer(csvfile)
+        csv_writer.writerow(['IP', 'Count'])
+
+        for ip, count in ip_count.items():
+            csv_writer.writerow([ip, count])
+
+    return f"CSV data exported to {output_filename_csv}\nLocation: {os.getcwd()}\n"
+
 
 # Final function to run whois on IP addresses and export to csv
 def ipwhois_run(ip_found, verbose=False):
     unique_ips = list(set(ip_found))
     baseurl = 'https://ipinfo.io/'
+
     ipwhois_dict = {
         "IP": "ip",
         "Name": "org",
@@ -144,47 +163,42 @@ def ipwhois_run(ip_found, verbose=False):
         except Exception as e:
             print(f"Unexpected error encountered: {e}")
             return exit(1)
-        else:
-            print("Request successful")
-            convert = json.loads(ipwhois_data)
-            ip_data.append(convert)
+
+        convert = json.loads(ipwhois_data)
+        ip_data.append(convert)
 
     if verbose == True:
-        print(ip_data)
         output_filename_csv = "ipwhois_verbose.csv"
         csv_headers = verbose_ipwhois_dict.keys()
-        actual_data_keys = [verbose_ipwhois_dict[header] for header in csv_headers]
+        ipwhois_keys = [verbose_ipwhois_dict[header] for header in csv_headers]
 
         with open(output_filename_csv, 'w', newline='', encoding='utf-8') as csvfile:
             csv_writer = csv.writer(csvfile)
-
             csv_writer.writerow(csv_headers)
 
             for record in ip_data:
                 row = []
-                for key in actual_data_keys:
+                for key in ipwhois_keys:
                     row.append(record.get(key, 'null'))
                 csv_writer.writerow(row)
 
-        return f"CSV data exported to {output_filename_csv}"
+        return f"CSV data exported to {output_filename_csv}\nLocation: {os.getcwd()}"
 
-    else:
-        output_filename_csv = "ipwhois.csv"
-        csv_headers = ipwhois_dict.keys()
-        actual_data_keys = [ipwhois_dict[header] for header in csv_headers]
+    output_filename_csv = "ipwhois.csv"
+    csv_headers = ipwhois_dict.keys()
+    ipwhois_keys = [ipwhois_dict[header] for header in csv_headers]
 
-        with open(output_filename_csv, 'w', newline='', encoding='utf-8') as csvfile:
-            csv_writer = csv.writer(csvfile)
+    with open(output_filename_csv, 'w', newline='', encoding='utf-8') as csvfile:
+        csv_writer = csv.writer(csvfile)
+        csv_writer.writerow(csv_headers)
 
-            csv_writer.writerow(csv_headers)
+        for record in ip_data:
+            row = []
+            for key in ipwhois_keys:
+                row.append(record.get(key, 'null'))
+            csv_writer.writerow(row)
 
-            for record in ip_data:
-                row = []
-                for key in actual_data_keys:
-                    row.append(record.get(key, 'null'))
-                csv_writer.writerow(row)
-
-        return f"CSV data exported to {output_filename_csv}"
+    return f"CSV data exported to {output_filename_csv}\nLocation: {os.getcwd()}"
 
 # Main function
 def main():
@@ -198,9 +212,7 @@ def main():
     if len(sys.argv) > 1:
         if "--verbose" in arguments_list:
             verbose = True
-            print("Verbose mode enabled.")
-            print("")
-
+            print("Verbose mode enabled.\n")
 
     filepath_check(filepath)
     file_type = check_file_type(filepath)
@@ -208,10 +220,8 @@ def main():
     print(f"File type: {file_type}")
 
     if file_type not in ['.txt', '.csv']:
-        print("")
-        print(f"'{file_type} file types' is not supported.")
-        print("Please provide path to .TXT or .CSV file.")
-        print("")
+        print(f"'\n{file_type} file types' is not supported.")
+        print("Please provide path to .TXT or .CSV file.\n")
         print("Exiting.. Goodbye..")
         exit(1)
 
@@ -219,22 +229,23 @@ def main():
         prompt = input("Enter the column name containing IPs [case sensitive]: ")
         ip_column_name = prompt
         ip_found = scan_export(file_type, filepath, ip_column_name)
-        print(f"IP(s) found: {ip_found}")
-        print("")
+        print(f"IP(s) found: {ip_found}\n")
     else:
         ip_found = scan_export(file_type, filepath, ip_column_name=None)
-        print(f"IP(s) found: {ip_found}")
-        print("")
+        print(f"IP(s) found: {ip_found}\n")
+
+    if verbose == True:
+        print("Starting..\nVerbose mode: IP Count CSV report")
+        ip_counter(ip_found)
+
 
     result = ipwhois_run(ip_found, verbose)
     print(result)
-    print("All done.. Goodbye..")
-
+    print("\nThank you for using Bulk IPv4 Whois Report!\nGoodbye!")
 
 # Confirms filepath is provided before running Main
 if len(sys.argv) == 1:
-        print("Usage: python3 ipwhois.py '<filepath>'")
-        print("")
+        print("Usage: python3 ipwhois.py '<filepath>'\n")
         print("Exiting.. Goodbye..")
         exit(1)
 
