@@ -186,7 +186,7 @@ def ipwhois_run(ip_found, verbose=False):
 
         return f"CSV data exported to {output_filename_csv}"
 
-
+# Main function
 def main():
     system_check()
 
@@ -231,7 +231,7 @@ def main():
     print("All done.. Goodbye..")
 
 
-# Main function starts here
+# Confirms filepath is provided before running Main
 if len(sys.argv) == 1:
         print("Usage: python3 ipwhois.py '<filepath>'")
         print("")
