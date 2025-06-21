@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+API_TOKEN = "YOUR_API_TOKEN_HERE"
 
 """
 Filename: ipwhois.py
@@ -126,30 +127,30 @@ def ip_counter(iplist):
 # Final function to run whois on IP addresses and export to csv
 def ipwhois_run(ip_found, verbose=False):
     unique_ips = list(set(ip_found))
-    baseurl = 'https://ipinfo.io/'
+    baseurl = 'https://api.ipinfo.io/lite/'
+    token = f'?token={API_TOKEN}'
 
     ipwhois_dict = {
         "IP": "ip",
-        "Name": "org",
-        "City": "city",
-        "Region": "region",
+        "Name": "as_name",
+        "Domain": "as_domain",
         "Country": "country",
     }
 
     verbose_ipwhois_dict = {
         "IP": "ip",
-        "Name": "org",
-        "Hostname": "hostname",
-        "City": "city",
-        "Region": "region",
-        "Postal": "postal",
+        "Name": "as_name",
+        "Domain": "as_domain",
+        "ASN": "asn",
+        "Country Code": "country_code",
         "Country": "country",
-        "Coordinates": "loc",
+        "Continent Code": "continent_code",
+        "Continent": "continent",
     }
 
     ip_data = []
     for ip in unique_ips:
-        url = baseurl + ip
+        url = baseurl + ip + token
         print(f"Connecting to {url}")
         try:
             ipwhois_data = urllib.request.urlopen(url).read().decode('utf-8')
