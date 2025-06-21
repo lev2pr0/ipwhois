@@ -1,8 +1,5 @@
-IP,dummy,name,country
-192.168.0.1,dummy1,name1,country1
-10.0.0.1,dummy2,name2,country2
-172.16.0.1,dummy3,name3,country3
-192.168.0.2,dummy4,name4,country4
-192.168.0.3,dummy5,name5,country5
-192.168.0.4,dummy6,name6,country6
-192.168.0.5,dummy7,name7,country7
+IP,foobar,name,country
+8.8.8.8,foobar1,name1,country1
+1.1.1.1,foobar2,name2,country2
+70.231.16.0,foobar3,name3,country3
+8.8.8.8,foobar1,name1,country1
