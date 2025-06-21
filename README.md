@@ -1,4 +1,4 @@
-# Bulk IPv4 Whois Report | Work in progress
+# Bulk IPv4 Whois Report
 
 ## Purpose 
 
