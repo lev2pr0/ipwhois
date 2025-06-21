@@ -73,7 +73,8 @@ ipwhois.py utilizes IPinfo's public API and service is limited to 1000 requests 
    python3 /MyFolder/<scriptname>.py <Parameter1> <Parameter2>
    ```
 
-<br></br>
+</br>
+
 ## Parameters 
 
 ```python
