@@ -2,44 +2,69 @@
 
 ## Purpose 
 
-<img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGlmcmhqeWZkejFnZHV3MnU2MTIxYjczNW9ldTJmdm1leDdsaXR4YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vR1dPIYzQmkRzLZk2w/giphy.gif" width="200" height="200" />
-
-<br></br>
-## Prequisitites 
-
-### .TXT or .CSV File Prequisites
-
-CSV Limitations:
-- Must be comma delimited
-- Column containing Ips must be provided
-
-TXT Limitation:
-- Must be space or line delimited
-
-For examples: Samples folder in repository
+Bulk IPv4 Whois Report is a powerful tool for obtaining information about a large number of IPv4 addresses simultaneously. Instead of performing individual lookups for each IP, a bulk report streamlines the process, providing a consolidated view of ownership, registration, and etc. for many IP addresses at once.
 
 </br>
 
-## Usage 
+## Prequisitites 
+
+### IPinfo.io API
+
+ipwhois.py utilizes IPinfo's public API and service is limited to 1000 requests per day. The limit is shared by everyone within same network using same Public IP Address for requests. I highly recommend utilizing an API Token to avoid limitation by following provided steps below:
+
+1. Sign up for free account at [https://ipinfo.io/signup](https://ipinfo.io/signup); Otherwise, login to your IPinfo account [here](https://ipinfo.io/login)
+2. Navigate to `API Token` page 
+
+![API_Token_1](https://github.com/user-attachments/assets/3226e0e0-bfaf-4489-a184-9d3355ce8226)
+
+4. Copy your account's `Token`
+   
+![API_Token_2](https://github.com/user-attachments/assets/9ac4e942-162a-4c04-a167-637a2aba1e54)
+ 
+7. Download ipwhois_api.py from this respository
+8. Open file in editor and add `Token` to `line two` then Save
+
+![API_Token_3](https://github.com/user-attachments/assets/6534223c-91c3-4b55-96f7-fc9ef7a934da)
+
+
+<p align="center" 
+
+**WARNING:** API tokens are sensitive! Keep them secret, don't expose them in code you share or public repositories, and revoke immediately if compromised.
+
+</br>
+
+## Usage
+
+
+
+### CSV Limitations:
+- Must use CSV default comma delimitation; 
+- Column name containing IPs must be provided
+
+### TXT Limitation:
+- Must be space or line delimited
+
+*For report samples:* Samples folder in repository
 
 ### Windows 
-1. Download or make copy of script [here](https://github.com/lev2pr0/ipwhois/blob/main/ipwhois.py)
-2. Take note of the script’s path
-3. Open PowerShell as an administrator
-4. **Optional:** Navigate to directory location of script using ```cd``` command (Example: ```cd “C:\MyFolder”```)
-5. Run Python Script:
+1. Before starting, please review Supported Versions and Disclaimers [here](https://github.com/lev2pr0/ipwhois/tree/main?tab=readme-ov-file#notes) and confirm you meet requirements for usage.
+2. Download or make copy of script
+3. Take note of the script’s path
+4. Open PowerShell as an administrator
+5. **Optional:** Navigate to directory location of script using ```cd``` command (Example: ```cd “C:\My Folder”```)
+6. Run Python Script:
    ```python
-   python3 ./<scriptname>.py <Parameter1> <Parameter2>
+   python <scriptname>.py <Parameter1> <Parameter2>
    ```
    ```python
-   python3 C:\MyFolder\<scriptname>.py <Parameter1> <Parameter2>
+   python C:\MyFolder\<scriptname>.py <Parameter1> <Parameter2>
    ```
 
 ### MacOS / Linux
-1. Download or make copy of script [here](https://github.com/lev2pr0/ipwhois/blob/main/ipwhois.py)
+1. Download or make copy of script 
 2. Take note of the script’s path
 3. Open Terminal
-4. **Optional:** Navigate to directory location of script using ```cd``` command (Example: ```cd “C:\MyFolder”```)
+4. **Optional:** Navigate to directory location of script using ```cd``` command (Example: ```cd "/My Folder"```)
 5. Run Python Script:
    ```python
    python3 ./<scriptname>.py <Parameter1> <Parameter2>
@@ -51,24 +76,40 @@ For examples: Samples folder in repository
 <br></br>
 ## Parameters 
 
+```python
+python3 ipwhois.py <File_Path>
+```
+`<File_Path>` is a required parameter to pull report of IPs for running Bulk IP Whois against using script. If not provided, the script will end with usage instructions `python3 ipwhois.py '<filepath>'`. 
+
+---
+```python
+python3 ipwhois.py <File_Path> --verbose
+```
+`--verbose` is an optional parameter to provide more detailed reports and all examples will be provided here. Once provided, you will see print `Verbose mode enabled.` within terminal. 
+
+</br>
+
+## Demos & Screenshots
+
 <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGlmcmhqeWZkejFnZHV3MnU2MTIxYjczNW9ldTJmdm1leDdsaXR4YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vR1dPIYzQmkRzLZk2w/giphy.gif" width="200" height="200" />
 
-<br></br>
-## Demo
+<p align="center" 
 
-<img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGlmcmhqeWZkejFnZHV3MnU2MTIxYjczNW9ldTJmdm1leDdsaXR4YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vR1dPIYzQmkRzLZk2w/giphy.gif" width="200" height="200" />
+**Please Note:** API tokens are used in the demos provided. 
 
-<br></br>
+</br>
+
 ## NOTES
 
-### Supported Versions
+### Supported
 
--- Python 3.10+ installed
+-- Python 3.10+
 
 -- Windows 10 and above
 
 -- macOS 14 (Sonoma) and above
 
+</br>
 
 ### Disclaimers
 
@@ -80,7 +121,8 @@ For examples: Samples folder in repository
 
 -- The script's behavior may vary depending on the system configuration and environment.
 
-<br></br>
+</br>
+
 ## Contributing
 
 Open to all collaboration 🙏🏽
