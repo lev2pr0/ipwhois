@@ -10,7 +10,7 @@ Bulk IPv4 Whois Report is a powerful tool for obtaining information about a larg
 
 ### IPinfo.io API
 
-ipwhois.py utilizes IPinfo's public API and service is limited to 1000 requests per day. The limit is shared by everyone within same network using same Public IP Address for requests; see API data differences here. I highly recommend utilizing an API Token to avoid limitation by following provided steps below:
+ipwhois.py utilizes IPinfo's public API and service is limited to 1000 requests per day. The limit is shared by everyone within same network using same Public IP Address for requests; see API data differences [here](https://github.com/lev2pr0/ipwhois/tree/main?tab=readme-ov-file#lite-vs-public-api-differences). I highly recommend utilizing an API Token to avoid limitation by following provided steps below:
 
 1. Sign up for free account at [https://ipinfo.io/signup](https://ipinfo.io/signup); Otherwise, login to your IPinfo account [here](https://ipinfo.io/login)
 2. Navigate to `API Token` page 
@@ -236,7 +236,7 @@ Goodbye!
 
 -- macOS 14 (Sonoma) and above
 
--- Linux (unsupported linux distributions may vary)
+-- Stable versions of Linux (unsupported vendor linux distributions experience may vary)
 
 </br>
 
@@ -276,6 +276,8 @@ Goodbye!
 </br>
 
 ### Disclaimers
+
+-- API tokens are sensitive! Keep them secret, don't expose them in code you share or public repositories, and revoke immediately if compromised.
 
 -- Always test the script in a non-production environment first.
 
