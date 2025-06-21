@@ -36,7 +36,6 @@ def system_check():
         print("Exiting.. Goodbye..")
         exit(1)
 
-
 # Verify filepath exists
 def filepath_check(filepath):
     if filepath == None:
@@ -122,7 +121,6 @@ def ip_counter(iplist):
             csv_writer.writerow([ip, count])
 
     return f"CSV data exported to {output_filename_csv}\nLocation: {os.getcwd()}\n"
-
 
 # Final function to run whois on IP addresses and export to csv
 def ipwhois_run(ip_found, verbose=False):
