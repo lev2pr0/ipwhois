@@ -7,55 +7,44 @@
 <br></br>
 ## Prequisitites 
 
-### MacOS | Python Prerequisites 
-1. Open Terminal 
-2. Run `python3 --version` to verify Python installed
-3. If not installed or [supported version](https://github.com/lev2pr0/ipwhois/edit/main/README.md#supported-versions), then first install Homebrew
-```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-4. Open ~/.zshrc and add Homebrew to path:
-
-  - Run `Nano "~/.zshrc"`
-  - Click `I` and Add `export PATH="/opt/homebrew/bin:$PATH"`
-  - Click `Control+X` then `Y`
-
-6. Close and reopen Terminal
-7. Install python with brew by running: `brew install python3`
-8. Run `python3 --version` to verify Python installed
-
 ### .TXT or .CSV File Prequisites
 
-<img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGlmcmhqeWZkejFnZHV3MnU2MTIxYjczNW9ldTJmdm1leDdsaXR4YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vR1dPIYzQmkRzLZk2w/giphy.gif" width="200" height="200" />
+CSV Limitations:
+- Must be comma delimited
+- Column containing Ips must be provided
+
+TXT Limitation:
+- Must be space or line delimited
+
+For examples: Samples folder in repository
 
 <br></br>
 ## Usage 
 
 ### Windows 
-1. Download or make copy of script [here](https://github.com/lev2pr0/ipwhois/blob/main/ipwhois.ps1)
+1. Download or make copy of script [here](https://github.com/lev2pr0/ipwhois/blob/main/ipwhois.py)
 2. Take note of the script’s path
 3. Open PowerShell as an administrator
-4. Use ```Set-ExecutionPolicy -ExecutionPolicy <VALUE> -Scope <VALUE>``` to change to acceptable [Execution Policy](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.5#-executionpolicy)
-5. **Optional:** Navigate to directory location of script using ```cd``` command (Example: ```cd “C:\MyFolder”```)
-6. Run PowerShell Script:
-   ```powershell
-   .\<scriptname>.ps1 -Parameter1 -Parameter2 <VALUE>
+4. **Optional:** Navigate to directory location of script using ```cd``` command (Example: ```cd “C:\MyFolder”```)
+5. Run Python Script:
+   ```python
+   python3 ./<scriptname>.py <Parameter1> <Parameter2>
    ```
-   ```powershell
-   C:\MyFolder\<scriptname>.ps1 -Parameter1 -Parameter2 <VALUE>
+   ```python
+   python3 C:\MyFolder\<scriptname>.py <Parameter1> <Parameter2>
    ```
 
-### MacOS
+### MacOS / Linux
 1. Download or make copy of script [here](https://github.com/lev2pr0/ipwhois/blob/main/ipwhois.py)
 2. Take note of the script’s path
 3. Open Terminal
 4. **Optional:** Navigate to directory location of script using ```cd``` command (Example: ```cd “C:\MyFolder”```)
 5. Run Python Script:
    ```python
-   .\<scriptname>.py -Parameter1 -Parameter2 <VALUE>
+   python3 ./<scriptname>.py <Parameter1> <Parameter2>
    ```
    ```python
-   C:\MyFolder\<scriptname>.py -Parameter1 -Parameter2 <VALUE>
+   python3 /MyFolder/<scriptname>.py <Parameter1> <Parameter2>
    ```
 
 <br></br>
@@ -73,9 +62,7 @@
 
 ### Supported Versions
 
--- For ipwhois.ps1: Powershell 7 or later
-
--- For ipwhois.py: Python 3.10+ installed
+-- Python 3.10+ installed
 
 -- Windows 10 and above
 
