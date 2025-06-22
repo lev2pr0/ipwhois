@@ -54,7 +54,7 @@ def filepath_check(filepath):
 
 # Check for file type
 def check_file_type(filepath):
-    filename, file_extension = os.path.splitext(filepath)
+    dirpath, file_extension = os.path.splitext(filepath)
     file_extension = file_extension.lower()
     if file_extension == '.txt':
         report = ".txt"
@@ -102,7 +102,9 @@ def scan_export(file_type, filepath, ip_column_name):
         print("No valid IPv4 addresses found.\n")
         prompt = input("Do you want to try again? (y/n): ")
         if prompt.lower() == 'y':
-            main()
+            input(f"Add IP(s) to {filepath}\nPress Enter when ready to continue...")
+            print("Restarting..")
+            return main(filepath)
         else:
             print("Exiting.. Goodbye..")
             exit(1)
@@ -201,11 +203,8 @@ def ipwhois_run(ip_found, verbose=False):
     return f"CSV data exported to {output_filename_csv}\nLocation: {os.getcwd()}"
 
 # Main function
-def main():
+def main(filepath):
     system_check()
-
-    filepath = sys.argv[1]
-    arguments_list = sys.argv[2:]
 
     # Check for --verbose to set to TRUE
     verbose = False
@@ -242,11 +241,14 @@ def main():
     result = ipwhois_run(ip_found, verbose)
     print(f"\n{result}")
     print("\nThank you for using Bulk IPv4 Whois Report!\nGoodbye!")
+    exit(0)
 
 # Confirms filepath is provided before running Main
+filepath = sys.argv[1]
+arguments_list = sys.argv[2:]
 if len(sys.argv) == 1:
         print("Usage: python3 ipwhois.py '<filepath>'\n")
         print("Exiting.. Goodbye..")
         exit(1)
 
-main()
+main(filepath)
