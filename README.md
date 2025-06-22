@@ -115,7 +115,7 @@ python3 ipwhois.py <File_Path> --verbose
 
 <p align="center" 
 
-**Please Note:** You can find all examples of reports [here](https://github.com/lev2pr0/ipwhois/tree/main/ipwhois_report_examples) 
+**Note:** You can find all examples of reports [here](https://github.com/lev2pr0/ipwhois/tree/main/ipwhois_report_examples) 
 
 ### Terminal 
 
@@ -223,7 +223,7 @@ Goodbye!
 
 <p align="center" 
 
-**Please Note:** API tokens are used in the demos provided. 
+**Please Note:** API tokens are used in all demos provided above.
 
 </br>
 
