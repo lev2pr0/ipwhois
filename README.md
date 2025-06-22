@@ -38,11 +38,11 @@ ipwhois.py utilizes IPinfo's public API and service is limited to 1000 requests 
 
 
 ### CSV Limitations:
-- Must use CSV default comma delimitation; 
-- Column name containing IPs must be provided
+- Requires use of CSV files' default comma delimitation
+- Requires column name with IPs and will be prompted for provide; Case sensitive
 
 ### TXT Limitation:
-- Must be space or line delimited
+- Requires to be space or line delimited
 
 *For test samples:* see *test_samples* folder in repository [here](https://github.com/lev2pr0/ipwhois/tree/main/test_samples)
 
@@ -231,13 +231,18 @@ Goodbye!
 
 ### Supported
 
--- Python 3.10+
+- Python 3.10+
+-  Windows 10 and above
+-  macOS 14 (Sonoma) and above
+-  Stable versions of Linux (unsupported vendor linux distributions experience may vary)
 
--- Windows 10 and above
+</br>
 
--- macOS 14 (Sonoma) and above
+### Design Logic
 
--- Stable versions of Linux (unsupported vendor linux distributions experience may vary)
+- Minimal .py files and condensed code for easier distribution
+- Python Standard Library used only to reduce complex requirements to use
+- .env file is recommended for API Token for personal use. Design choice for ease of use for all and in secure environments that block .env files. 
 
 </br>
 
