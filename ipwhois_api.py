@@ -101,9 +101,12 @@ def scan_export(file_type, filepath, ip_column_name):
 
     if len(iplist) == 0:
         print("No valid IPv4 addresses found.\n")
-        print("Exiting.. Goodbye..")
-        exit(1)
-
+        prompt = input("Do you want to try again? (y/n): ")
+        if prompt.lower() == 'y':
+            main()
+        else:
+            print("Exiting.. Goodbye..")
+            exit(1)
     return iplist
 
 # Verbose function to provide CSV output of IP count
