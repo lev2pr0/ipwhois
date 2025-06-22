@@ -2,7 +2,7 @@
 API_TOKEN = "YOUR_API_TOKEN_HERE"
 
 """
-Filename: ipwhois.py
+Filename: ipwhois_api.py
 Author: Levar Norwood
 Date: 2025-06-21
 Version: 1.0
