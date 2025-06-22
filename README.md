@@ -61,11 +61,12 @@ ipwhois.py utilizes IPinfo's public API and service is limited to 1000 requests 
    ```
 
 ### MacOS / Linux
-1. Download or make copy of script 
-2. Take note of the script’s path
-3. Open Terminal
-4. **Optional:** Navigate to directory location of script using ```cd``` command (Example: ```cd "/My Folder"```)
-5. Run Python Script:
+1. Before starting, please review Supported Versions and Disclaimers [here](https://github.com/lev2pr0/ipwhois/tree/main?tab=readme-ov-file#notes) and confirm you meet requirements for usage.
+2. Download or make copy of script 
+3. Take note of the script’s path
+4. Open Terminal
+5. **Optional:** Navigate to directory location of script using ```cd``` command (Example: ```cd "/My Folder"```)
+6. Run Python Script:
    ```python
    python3 ./<scriptname>.py <Parameter1> <Parameter2>
    ```
