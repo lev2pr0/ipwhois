@@ -277,15 +277,11 @@ Goodbye!
 
 ### Disclaimers
 
--- API tokens are sensitive! Keep them secret, don't expose them in code you share or public repositories, and revoke immediately if compromised.
-
--- Always test the script in a non-production environment first.
-
--- Review the script's code and understand its functionality before execution.
-
--- The script may require specific permissions or elevated privileges to run correctly.
-
--- The script's behavior may vary depending on the system configuration and environment.
+- API tokens are sensitive! Keep them secret, don't expose them in code you share or public repositories, and revoke immediately if compromised.
+- Always test the script in a non-production environment first.
+- Review the script's code and understand its functionality before execution.
+- The script may require specific permissions or elevated privileges to run correctly.
+- The script's behavior may vary depending on the system configuration and environment.
 
 </br>
 
