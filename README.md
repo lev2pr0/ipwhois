@@ -39,7 +39,7 @@ ipwhois.py utilizes IPinfo's public API and service is limited to 1000 requests 
 
 ### CSV Limitations:
 - Requires use of CSV files' default comma delimitation
-- Requires column name with IPs and will be prompted for provide; Case sensitive
+- Requires column name with IPs and will be prompted to provide; Case sensitive
 
 ### TXT Limitation:
 - Requires to be space or line delimited
@@ -240,9 +240,9 @@ Goodbye!
 
 ### Design Logic
 
-- Minimal .py files and condensed code for easier distribution
-- Python Standard Library used only to reduce complex requirements to use
-- .env file is recommended for API Token for personal use. Design choice for ease of use for all and in secure environments that block .env files. 
+- Minimal .py files and condensed code for easier distribution.
+- Python Standard Library used only to reduce complex requirements to use.
+- .env file is recommended for API Token for personal use. Design choice for ease of use for all; especially in secure environments that block .env files. 
 
 </br>
 
