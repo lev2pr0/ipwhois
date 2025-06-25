@@ -1,33 +1,33 @@
 # Bulk IPv4 Whois Report
 
-## Purpose 
+## Purpose
 
 Bulk IPv4 Whois Report is a powerful tool for obtaining information about a large number of IPv4 addresses simultaneously. Instead of performing individual lookups for each IP, a bulk report streamlines the process, providing a consolidated view of ownership, registration, and etc. for many IP addresses at once.
 
 </br>
 
-## Prequisitites 
+## Prequisitites
 
 ### IPinfo.io API
 
 ipwhois.py utilizes IPinfo's public API and service is limited to 1000 requests per day. The limit is shared by everyone within same network using same Public IP Address for requests; see API data differences [here](https://github.com/lev2pr0/ipwhois/tree/main?tab=readme-ov-file#lite-vs-public-api-differences). I highly recommend utilizing an API Token to avoid limitation by following provided steps below:
 
 1. Sign up for free account at [https://ipinfo.io/signup](https://ipinfo.io/signup); Otherwise, login to your IPinfo account [here](https://ipinfo.io/login)
-2. Navigate to `API Token` page 
+2. Navigate to `API Token` page
 
 ![API_Token_1](https://github.com/user-attachments/assets/3226e0e0-bfaf-4489-a184-9d3355ce8226)
 
 4. Copy your account's `Token`
-   
+
 ![API_Token_2](https://github.com/user-attachments/assets/9ac4e942-162a-4c04-a167-637a2aba1e54)
- 
+
 7. Download ipwhois_api.py from this respository
 8. Open file in editor and add `Token` to `line two` then Save
 
 ![API_Token_3](https://github.com/user-attachments/assets/6534223c-91c3-4b55-96f7-fc9ef7a934da)
 
 
-<p align="center" 
+<p align="center"
 
 **WARNING:** API tokens are sensitive! Keep them secret, don't expose them in code you share or public repositories, and revoke immediately if compromised.
 
@@ -46,7 +46,7 @@ ipwhois.py utilizes IPinfo's public API and service is limited to 1000 requests 
 
 *For test samples:* see *test_samples* folder in repository [here](https://github.com/lev2pr0/ipwhois/tree/main/test_samples)
 
-### Windows 
+### Windows
 1. Before starting, please review Supported Versions and Disclaimers [here](https://github.com/lev2pr0/ipwhois/tree/main?tab=readme-ov-file#notes) and confirm you meet requirements for usage.
 2. Download or make copy of script
 3. Take note of the script’s path
@@ -62,7 +62,7 @@ ipwhois.py utilizes IPinfo's public API and service is limited to 1000 requests 
 
 ### MacOS / Linux
 1. Before starting, please review Supported Versions and Disclaimers [here](https://github.com/lev2pr0/ipwhois/tree/main?tab=readme-ov-file#notes) and confirm you meet requirements for usage.
-2. Download or make copy of script 
+2. Download or make copy of script
 3. Take note of the script’s path
 4. Open Terminal
 5. **Optional:** Navigate to directory location of script using ```cd``` command (Example: ```cd "/My Folder"```)
@@ -76,19 +76,19 @@ ipwhois.py utilizes IPinfo's public API and service is limited to 1000 requests 
 
 </br>
 
-## Parameters 
+## Parameters
 
 ```python
 python3 ipwhois.py <File_Path>
 ```
-`<File_Path>` is a required parameter to pull report of IPs for running Bulk IP Whois against using script. If not provided, the script will end with usage instructions `python3 ipwhois.py '<filepath>'`. 
+`<File_Path>` is a required parameter to pull report of IPs for running Bulk IP Whois against using script. If not provided, the script will end with usage instructions `python3 ipwhois.py '<filepath>'`.
 
 ---
 
 ```python
 python3 ipwhois.py <File_Path> --verbose
 ```
-`--verbose` is an optional parameter to provide more detailed reports and all examples will be provided [here](https://github.com/lev2pr0/ipwhois/tree/main/ipwhois_report_examples). Once provided, you will see print `Verbose mode enabled.` within terminal. 
+`--verbose` is an optional parameter to provide more detailed reports and all examples will be provided [here](https://github.com/lev2pr0/ipwhois/tree/main/ipwhois_report_examples). Once provided, you will see print `Verbose mode enabled.` within terminal.
 
 </br>
 
@@ -113,11 +113,11 @@ python3 ipwhois.py <File_Path> --verbose
 
 ![image](https://github.com/user-attachments/assets/aa440ec2-d019-427a-ae2b-0a9ec9599a06)
 
-<p align="center" 
+<p align="center"
 
 **Note:** You can find all examples of reports [here](https://github.com/lev2pr0/ipwhois/tree/main/ipwhois_report_examples) 
 
-### Terminal 
+### Terminal
 
 ```
 python3 ipwhois_api.py "/Users/levarnorwood/workspace/github.com/lev2pr0/ipwhois/test_samples/test_space_delimited.txt"
@@ -127,10 +127,6 @@ Starting..
 Provided file path: /Users/levarnorwood/workspace/github.com/lev2pr0/ipwhois/test_samples/test_space_delimited.txt
 File type: .txt
 IP(s) found: ['8.8.8.8', '1.1.1.1', '70.231.16.0', '8.8.8.8']
-
-Connecting to https://api.ipinfo.io/lite/70.231.16.0?token=API_TOKEN
-Connecting to https://api.ipinfo.io/lite/8.8.8.8?token=API_TOKEN
-Connecting to https://api.ipinfo.io/lite/1.1.1.1?token=API_TOKEN
 
 CSV data exported to ipwhois.csv
 Location: /Users/levarnorwood/workspace/github.com/lev2pr0/ipwhois
@@ -157,10 +153,6 @@ Verbose mode: IP Count CSV report
 CSV data exported to ipcount_verbose.csv
 Location: /Users/levarnorwood/workspace/github.com/lev2pr0/ipwhois
 
-Connecting to https://api.ipinfo.io/lite/70.231.16.0?token=API_TOKEN
-Connecting to https://api.ipinfo.io/lite/8.8.8.8?token=API_TOKEN
-Connecting to https://api.ipinfo.io/lite/1.1.1.1?token=API_TOKEN
-
 CSV data exported to ipwhois_verbose.csv
 Location: /Users/levarnorwood/workspace/github.com/lev2pr0/ipwhois
 
@@ -179,10 +171,6 @@ Provided file path: /Users/levarnorwood/workspace/github.com/lev2pr0/ipwhois/tes
 File type: .csv
 Enter the column name containing IPs [case sensitive]: IP
 IP(s) found: ['8.8.8.8', '1.1.1.1', '70.231.16.0', '8.8.8.8']
-
-Connecting to https://api.ipinfo.io/lite/70.231.16.0?token=API_TOKEN
-Connecting to https://api.ipinfo.io/lite/8.8.8.8?token=API_TOKEN
-Connecting to https://api.ipinfo.io/lite/1.1.1.1?token=API_TOKEN
 
 CSV data exported to ipwhois.csv
 Location: /Users/levarnorwood/workspace/github.com/lev2pr0/ipwhois
@@ -210,10 +198,6 @@ Verbose mode: IP Count CSV report
 CSV data exported to ipcount_verbose.csv
 Location: /Users/levarnorwood/workspace/github.com/lev2pr0/ipwhois
 
-Connecting to https://api.ipinfo.io/lite/8.8.8.8?token=API_TOKEN
-Connecting to https://api.ipinfo.io/lite/1.1.1.1?token=API_TOKEN
-Connecting to https://api.ipinfo.io/lite/70.231.16.0?token=API_TOKEN
-
 CSV data exported to ipwhois_verbose.csv
 Location: /Users/levarnorwood/workspace/github.com/lev2pr0/ipwhois
 
@@ -221,7 +205,7 @@ Thank you for using Bulk IPv4 Whois Report!
 Goodbye!
 ```
 
-<p align="center" 
+<p align="center"
 
 **Please Note:** API tokens are used in all demos provided above.
 
@@ -242,11 +226,11 @@ Goodbye!
 
 - Minimal .py files and condensed code for easier distribution.
 - Python Standard Library used only to reduce complex requirements to use.
-- .env file is recommended for API Token for personal use. Design choice for ease of use for all; especially in secure environments that block .env files. 
+- .env file is recommended for API Token for personal use. Design choice for ease of use for all; especially in secure environments that block .env files.
 
 </br>
 
-### Lite vs Public API Differences 
+### Lite vs Public API Differences
 
 **Sample IPinfo Lite API Data**
 ```python
@@ -259,7 +243,7 @@ Goodbye!
   "country": "United States",
   "continent_code": "NA",
   "continent": "North America"
-}  
+}
 ```
 
 **Sample IPinfo Public API Data**
@@ -307,6 +291,6 @@ Please follow best practice outlined below:
 
 </br>
 
-<p align="center" 
- 
+<p align="center"
+
  **How to support?** Buy me coffee ☕️ via [Paypal](https://www.paypal.com/donate/?business=E7G9HLW2WPV22&no_recurring=1&item_name=Empowering+all+to+achieve+success+through+technology.%0A&currency_code=USD)

@@ -77,7 +77,7 @@ def scan_export(file_type, filepath, ip_column_name):
                 reader = csv.DictReader(csvfile)
                 if ip_column_name not in reader.fieldnames:
                     print(f"Error: Column '{ip_column_name}' not found in the CSV file.")
-                    return iplist
+                    exit(1)
                 for row in reader:
                     potential_ip = row.get(ip_column_name, '')
                     ip_match = ipv4_pattern.search(potential_ip)
@@ -150,10 +150,10 @@ def ipwhois_run(ip_found, verbose=False):
         "Coordinates": "loc",
     }
 
+    print("Starting IP Whois for IPs Found...")
     ip_data = []
     for ip in unique_ips:
         url = baseurl + ip
-        print(f"Connecting to {url}")
         try:
             ipwhois_data = urllib.request.urlopen(url).read().decode('utf-8')
         except urllib.error.HTTPError as e:
