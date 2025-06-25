@@ -150,7 +150,7 @@ def ipwhois_run(ip_found, verbose=False):
         "Coordinates": "loc",
     }
 
-    print("Starting IP Whois for IPs Found...")
+    print("Starting IP Whois for IPs found...")
     ip_data = []
     for ip in unique_ips:
         url = baseurl + ip
